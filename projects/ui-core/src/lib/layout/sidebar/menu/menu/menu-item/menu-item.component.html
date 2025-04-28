@@ -1,0 +1,81 @@
+@if(!hasChild()) {
+<li class="mt-2">
+  <a
+    [ngClass]="{
+      'text-primary bg-lightprimary dark:text-primary': isActive(item()?.route),
+      'hover:bg-lightprimary hover:text-primary dark:text-darklink dark:hover:text-primary text-link bg-transparent':
+        !isActive(item()?.route)
+    }"
+    class="flex items-center justify-center rounded-md px-2.5 py-2.5 mb-0.5 gap-3 !text-sm text-start leading-[normal] font-normal hover:bg-lightprimary hover:text-primary dark:text-darklink dark:hover:text-primary text-link bg-transparent"
+    [routerLink]="item()?.route"
+    ><span
+      data-testid="flowbite-sidebar-item-content"
+      id="flowbite-sidebar-item-:r73p:"
+      class="flex-1 whitespace-nowrap px-0 leading-21"
+      ><span
+        class="flex gap-3.5 align-center {{
+          collapsed && hover() ? '' : collapsed ? 'justify-center' : ''
+        }} items-center leading-normal truncate"
+      >
+        <fa-icon [icon]="item()?.icon"></fa-icon>
+        @if(!collapsed || (collapsed && hover())) {
+        <div class="max-w-36 truncate hide-menu flex-1">
+          {{ item()?.label | transloco }}
+        </div>
+        }
+      </span>
+    </span>
+  </a>
+</li>
+
+} @else {
+
+<li class="mt-2">
+  <a
+    aria-expanded="false"
+    class="flex items-center justify-center rounded-md px-2.5 py-2.5 mb-0.5 gap-3 !text-sm text-start leading-[normal] font-normal hover:bg-lightprimary hover:text-primary dark:text-darklink dark:hover:text-primary text-link bg-transparent group/link"
+    [attr.aria_controls]="id"
+    [attr.data-collapse-toggle]="id"
+  >
+    <fa-icon [icon]="item()?.icon"></fa-icon>
+    @if(!collapsed || (collapsed && hover())) {
+    <span class="flex-1 text-left rtl:text-right whitespace-nowrap">{{
+      item()?.label | transloco
+    }}</span>
+
+    <svg
+      stroke="currentColor"
+      fill="none"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      class="drop-icon"
+      height="1em"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19 9l-7 7-7-7"
+      ></path>
+    </svg>
+    }
+  </a>
+  <ul id="{{ id }}" class="flowbite-sidebar-item-group hidden">
+    @for (child of item()?.childs; track $index) {
+    <li>
+      <a
+        aria-labelledby="flowbite-sidebar-item-:rfab:"
+        class="flex items-center ms-7 ps-2 rounded-md py-2.5 gap-3 !text-sm text-start leading-[normal] font-normal dark:text-darklink dark:hover:text-primary text-link mb-0.5 hover:bg-lightprimary hover:!text-primary"
+        [routerLink]="child.route"
+      >
+        <div class="max-w-36 truncate hide-menu flex-1">
+          {{ child.label | transloco }}
+        </div></a
+      >
+    </li>
+    }
+  </ul>
+</li>
+}

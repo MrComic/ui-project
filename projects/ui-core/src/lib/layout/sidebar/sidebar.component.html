@@ -1,0 +1,144 @@
+<div
+  class=""
+  (clickOutside)="onClickOutside($event)"
+  [excludeSelectors]="['.drawer-button']"
+>
+  <div class="flex">
+    <nav
+      (mouseover)="showContent()"
+      (mouseleave)="hideContent()"
+      aria-label="Sidebar with multi-level dropdown example"
+      class=" transition-all duration-500 ease-in-out h-full fixed menu-sidebar  {{
+        isMobileMode
+          ? collapsed
+            ? 'translate-x-[100%]'
+            : 'animate-slide-in w-[270px]'
+          : !collapsed || (collapsed && hover)
+          ? 'w-[270px]'
+          : 'w-[75px]'
+      }} dark:bg-dark z-[6] border-border dark:border-darkborder"
+    >
+      <div
+        class="bg-white dark:bg-dark rtl:border-l ltr:border-r rounded-nonev w-100 border-border dark:border-darkborder h-full"
+      >
+        <div
+          class="{{
+            !collapsed ? 'px-6' : ''
+          }} flex border-b border-border dark:border-darkborder justify-start py-1 h-[72px] flex-row items-center brand-logo overflow-hidden"
+        >
+          <a href="/"
+            ><img
+              alt="logo"
+              loading="lazy"
+              decoding="async"
+              data-nimg="1"
+              class="block h-12"
+              style="color: transparent"
+              src="images/logo.png"
+            />
+          </a>
+          @if(!collapsed || (collapsed && hover) ) {
+          <span class="font-light text-lg dark:text-darklink px-2"
+            >پنل مدیریت</span
+          >
+          }
+        </div>
+        <div class="my-4 mx-2">
+          <div
+            class=" {{
+              !collapsed ? 'px-4 py-4' : 'px-2 py-2'
+            }} bg-lightgray dark:bg-darkinfo rounded-md overflow-hidden"
+          >
+            <div class="flex justify-between items-center">
+              @if(user) {
+              <div class="flex gap-4 items-center">
+                <img
+                  alt="profile-image"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="1"
+                  class="rounded-full  {{
+                    collapsed ? ' h-10 w-10' : 'w-14 h-14'
+                  }}"
+                  style="color: transparent"
+                  [src]="image"
+                />
+                <div>
+                  <h3 class="font-light text-lg dark:text-darklink">
+                    {{ user.firstName }} &nbsp; {{ user.lastName }}
+                  </h3>
+                  <p class="text-xs font-normal text-muted dark:text-darklink">
+                    {{ user.description }}
+                  </p>
+                </div>
+              </div>
+              } @else {
+              <div class="flex gap-4 items-center">
+                <img
+                  alt="profile-image"
+                  loading="lazy"
+                  decoding="async"
+                  data-nimg="1"
+                  class="rounded-full  {{
+                    collapsed ? ' h-10 w-10' : 'w-14 h-14'
+                  }}"
+                  style="color: transparent"
+                  src="/images/user.png"
+                />
+                <div>
+                  <h3 class="font-light text-lg dark:text-darklink">ممرضا</h3>
+                  <p class="text-xs font-normal text-muted dark:text-darklink">
+                    کاربر مهمان
+                  </p>
+                </div>
+              </div>
+              }
+              <div class="w-auto" data-testid="flowbite-tooltip-target">
+                <div class="cursor-pointer" (click)="logout()">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    aria-hidden="true"
+                    role="img"
+                    class="text-primary text-2xl iconify iconify--tabler"
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M7 6a7.75 7.75 0 1 0 10 0m-5-2v8"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+              <div
+                data-testid="flowbite-tooltip"
+                tabindex="-1"
+                class="absolute z-10 inline-block rounded-md px-3 py-2 text-xs font-normal shadow-sm whitespace-nowrap transition-opacity duration-300 invisible opacity-0 bg-gray-900 text-white dark:bg-gray-700"
+                style="position: absolute; top: 811px; left: 184.211px"
+                id=":R2qvaja:"
+                role="tooltip"
+              >
+                <div class="relative z-20">Logout</div>
+                <div
+                  class="absolute z-10 h-2 w-2 rotate-45 bg-gray-900 dark:bg-gray-700"
+                  data-testid="flowbite-tooltip-arrow"
+                  style="bottom: -4px; left: 29px"
+                >
+                  &nbsp;
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <core-menu [hover]="hover"></core-menu>
+      </div>
+    </nav>
+  </div>
+</div>

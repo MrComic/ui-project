@@ -1,0 +1,48 @@
+<ul class="space-y-1 relative">
+  <li *ngFor="let node of getChildren(currentParentId)">
+    <div
+      class="flex items-center cursor-pointer rounded px-2 py-1 transition-colors duration-200 hover:bg-gray-100 active:bg-gray-200 select-none"
+      [ngStyle]="{
+        'padding-left.px': !rtl ? level * 20 : 0,
+        'padding-right.px': rtl ? level * 20 : 0
+      }"
+      (contextmenu)="onNodeRightClick($event, node)"
+      (click)="onNodeClick(node)"
+    >
+      <button
+        *ngIf="hasChildren(node.id)"
+        (click)="toggle(node); $event.stopPropagation()"
+        class="flex items-center justify-center mx-2 w-6 h-6 text-gray-600 hover:bg-gray-300 rounded transition-transform transform duration-300 mr-1"
+        [ngClass]="{
+          'rotate-90': expandedNodes.has(node.id) && !rtl,
+          '-rotate-90': expandedNodes.has(node.id) && rtl
+        }"
+      >
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path [attr.d]="rtl ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'" />
+        </svg>
+      </button>
+
+      <span *ngIf="!hasChildren(node.id)" class="w-6"></span>
+
+      <span class="text-gray-800">{{ node.label }}</span>
+    </div>
+
+    <div *ngIf="expandedNodes.has(node.id)">
+      <app-tree
+        [nodes]="nodes"
+        [currentParentId]="node.id"
+        [level]="level + 1"
+        [rtl]="rtl"
+        [expandedNodes]="expandedNodes"
+        (nodeRightClick)="nodeRightClick.emit($event)"
+      ></app-tree>
+    </div>
+  </li>
+</ul>

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.menu-sidebar {
+  flex-shrink: 0;
+  z-index: 40;
+  transition: width 0.2s ease-in;
+  position: fixed;
+  left: 0;
+  border-style: dashed;
+  border: 1px;
+  right: 0;
+  height: 100%;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Yekan.woff2") format("woff2 supports variations"),
+    url("/fonts/Yekan.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+body,
+html {
+  font-family: Vazirmatn;
+  font-weight: 400;
+  height: 100%;
+  font-feature-settings: "ss01", "tnum";
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

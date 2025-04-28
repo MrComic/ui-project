@@ -1,0 +1,25 @@
+<core-modal
+  #default_modal
+  [isOpen]="true"
+  [isDismissable]="false"
+  [position]="'center'"
+  [size]="'md'"
+>
+  <core-modal-header>{{ title }}</core-modal-header>
+  <core-modal-body>
+    <p class="dark:text-white">{{ body }}</p>
+  </core-modal-body>
+  <core-modal-footer>
+    <div class="flex flex-row justify-end w-full">
+      <core-button size="xs" class="me-2" appLoaderButton (click)="onYes()">
+        <fa-icon [icon]="yesIcon"></fa-icon>
+        <span class="ms-2"> {{ "messages.yes" | transloco }}</span></core-button
+      >
+
+      <core-button size="xs" class="me-2" color="failure" (click)="onNo()">
+        <fa-icon [icon]="noIcon"></fa-icon>
+        <span class="ms-2"> {{ "messages.no" | transloco }}</span></core-button
+      >
+    </div>
+  </core-modal-footer>
+</core-modal>

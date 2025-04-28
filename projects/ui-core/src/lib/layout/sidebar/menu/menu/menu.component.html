@@ -1,0 +1,17 @@
+<ngx-simplebar class="h-[calc(100vh_-_190px)]">
+  <div class="px-2" data-testid="flowbite-sidebar-items">
+    <ul
+      data-testid="flowbite-sidebar-item-group"
+      class="mt-4 space-y-0 border-t border-ld pt-4 first:mt-0 first:border-t-0 first:pt-0 sidebar-nav sidebar-nav"
+    >
+      @for (item of menus(); track $index) {
+      <core-menu-item
+        [hover]="hover()"
+        [hasChild]="item.childs?.length != undefined"
+        [item]="item"
+      >
+      </core-menu-item>
+      }
+    </ul>
+  </div>
+</ngx-simplebar>

@@ -1,0 +1,107 @@
+<div class="relative overflow-hidden h-screen">
+  <div class="grid grid-cols-12 gap-3 h-screen bg-white dark:bg-dark">
+    <div class="col-span-12">
+      <div
+        class="flex h-screen items-center px-3 lg:justify-start justify-center"
+      >
+        <div class="max-w-[420px] w-full mx-auto">
+          <h3 class="text-2xl text-center font-bold">
+            {{ "login.welcome" | transloco }}
+          </h3>
+
+          <div
+            class="inline-flex relative w-full items-center justify-center mt-7"
+          >
+            <hr
+              class="my-3 h-px w-full border-0 bg-border dark:bg-darkborder !border-t !border-ld !bg-transparent"
+              data-testid="flowbite-hr-text"
+              role="separator"
+            />
+            <span
+              class="absolute left-1/2 -translate-x-1/2 bg-white px-3 text-base font-medium text-dark dark:bg-dark dark:text-white"
+              >{{ "login.login" | transloco }}</span
+            >
+          </div>
+          <form class="mt-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+              <div class="mb-2 block">
+                <label
+                  class="text-sm font-semibold text-gray-900 dark:text-white"
+                  data-testid="flowbite-label"
+                  for="Username"
+                  >{{ "login.username" | transloco }}</label
+                >
+              </div>
+              <div class="flex form-control">
+                <div class="relative w-full">
+                  <input
+                    id="username"
+                    formControlName="username"
+                    class="block w-full border disabled:cursor-not-allowed disabled:opacity-50 border-gray-300 bg-gray-50 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <div class="mb-2 block">
+                <label
+                  class="text-sm font-semibold text-gray-900 dark:text-white"
+                  data-testid="flowbite-label"
+                  for="userpwd"
+                  >{{ "login.password" | transloco }}</label
+                >
+              </div>
+              <div class="flex form-control">
+                <div class="relative w-full">
+                  <input
+                    id="password"
+                    formControlName="password"
+                    class="block w-full border disabled:cursor-not-allowed disabled:opacity-50 border-gray-300 bg-gray-50 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg"
+                    type="password"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-between my-5">
+              <div class="flex items-center gap-2">
+                <input
+                  class="rounded border border-border dark:border-darkborder cursor-pointer text-primary checkbox"
+                  id="accept"
+                  type="checkbox"
+                /><label
+                  class="text-sm text-gray-900 dark:text-white opacity-90 font-normal cursor-pointer"
+                  data-testid="flowbite-label"
+                  for="accept"
+                  >{{ "login.remember_me" | transloco }}</label
+                >
+              </div>
+            </div>
+
+            @if(errorMessage) {
+
+            <div
+              class="flex gap-2 text-base text-ld font-medium mt-6 items-center justify-center"
+            >
+              <p>{{ errorMessage }}</p>
+            </div>
+            }
+            <core-button
+              size="xs"
+              [extraClass]="'w-full bg-primary'"
+              [disabled]="!loginForm.valid"
+              (click)="onSubmit()"
+              appLoaderButton
+              class="ms-2 w-full"
+            >
+              <fa-icon [icon]="login"></fa-icon>
+              <span class="ms-2">
+                {{ "login.login_button" | transloco }}</span
+              ></core-button
+            >
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div
+  class="absolute z-50 bg-white rounded-md shadow-lg border w-40 context-menu"
+  [style.top.px]="position.top"
+  [style.left.px]="position.left"
+>
+  <ul class="py-1">
+    <li
+      *ngFor="let act of actions"
+      (click)="runAction(act.action)"
+      class="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm text-gray-800"
+    >
+      {{ act.label }}
+    </li>
+  </ul>
+</div>

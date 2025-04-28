@@ -1,0 +1,10 @@
+{
+  "/avatars": {
+    "target": "http://localhost:5134",
+    "secure": false
+  },
+  "/uploads": {
+    "target": "http://localhost:5134",
+    "secure": false
+  }
+}

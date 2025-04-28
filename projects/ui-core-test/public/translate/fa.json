@@ -1,0 +1,51 @@
+{
+  "Home": "خانه",
+  "yes": "بله",
+  "no": "خیر",
+  "Add": "افزودن",
+  "return": "بازگشت",
+  "title": "عنوان",
+  "price": "قیمت",
+  "BaseInformation": {
+    "Menu": "اطلاعات پایه",
+    "Scopes": "حوزه های آموزشی"
+  },
+  "Routing": {
+    "dashboard": "صفحه اصلی",
+    "scopes": "حوزه های آموزشی"
+  },
+  "login": {
+    "welcome": "ناحیه کاربری",
+    "login": "ورود به سیستم",
+    "username": "نام کاربری",
+    "password": "رمز عبور",
+    "remember_me": "مرا به خاطر بسپار",
+    "login_button": "ورود",
+    "errors": {
+      "invalidUserName": "نام کاربری یا رمز عبور اشتباه است"
+    }
+  },
+  "commonErrors": {
+    "required": "وارد کردن این فیلد اجباری می باشد",
+    "minlength": "مقدار این فیلد از {{value}} حرف کمتر نمی تواند باشد",
+    "maxlength": "مقدار این فیلد از {{value}} حرف بیشتر نمی تواند باشد"
+  },
+  "messages": {
+    "add": "افزودن",
+    "alert": "اخطار",
+    "return": "بازگشت",
+    "register": "ثبت",
+    "yes": "بله",
+    "acceptTerms": "شرایط را می پذیرم",
+    "no": "خیر",
+    "confirm": "تایید",
+    "gender": "جنسیت",
+    "confirmSaveUser": "یا از انجام این عمل اطمینان دارید؟"
+  },
+  "Scopes": {
+    "title": "حوزه های آموزشی",
+    "Form": "ثبت حوزه آموزشی",
+    "CreateRecord": "ثبت",
+    "Name": "نام"
+  }
+}

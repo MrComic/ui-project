@@ -1,0 +1,115 @@
+<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()" class="h-full">
+  <core-card [fullHeight]="true">
+    <ng-container card.header>
+      <h5 class="text-md tracking-tight text-gray-900 dark:text-gray-100">
+        عنوان خوب
+      </h5>
+    </ng-container>
+
+    <ng-container card.body>
+      {{ form.value | json }}
+      <hr class="my-3" />
+      <core-layout [cols]="3">
+        <core-layout-item [cols]="2">
+          <core-text-input
+            label="نام کاربری"
+            controlName="name"
+          ></core-text-input>
+        </core-layout-item>
+        <core-layout-item>
+          <core-select
+            formControlName="selectOption"
+            LabelText="دسته بندی"
+            [options]="dropdownOptions"
+            [Label]="'name'"
+            [Value]="'id'"
+            [multiple]="true"
+            [placeholder]="'Choose options'"
+          ></core-select>
+        </core-layout-item>
+        <core-layout-item>
+          <core-select
+            formControlName="selectOption"
+            LabelText="استفاده از سرویس"
+            [remoteSource]="remoteResource"
+            [Label]="'title'"
+            [Value]="'userId'"
+            [multiple]="false"
+            [placeholder]="'Choose options'"
+          ></core-select>
+        </core-layout-item>
+        <core-layout-item>
+          <core-checkbox
+            formControlName="acceptTerms"
+            label="شرایط را می پذیرم"
+            name="acceptTerms"
+          ></core-checkbox>
+        </core-layout-item>
+        <core-layout-item>
+          <core-jalali-datepicker
+            formControlName="date"
+            [label]="'انتخاب تاریخ'"
+          ></core-jalali-datepicker>
+        </core-layout-item>
+
+        <core-layout-item>
+          <core-toggle
+            controlName="terms"
+            label="{{ 'messages.acceptTerms' | transloco }}"
+          >
+          </core-toggle>
+        </core-layout-item>
+
+        <core-layout-item>
+          <core-radio
+            controlName="gender"
+            [items]="[
+              { value: '1', label: 'مرد' },
+              { value: '2', label: 'زن' },
+              { value: '3', label: 'نمیدونم' },
+              { value: '4', label: 'دلم نمیخواد بگم' },
+              { value: '5', label: 'همه موارد' }
+            ]"
+            label="{{ 'messages.gender' | transloco }}"
+          >
+          </core-radio>
+        </core-layout-item>
+
+        <core-layout-item [cols]="3">
+          <core-text-area
+            [rows]="2"
+            controlName="description"
+            [label]="'توضیحات'"
+          ></core-text-area>
+        </core-layout-item>
+      </core-layout>
+    </ng-container>
+
+    <ng-container card.footer>
+      <core-button
+        size="xs"
+        class="ms-2"
+        appLoaderButton
+        [disabled]="!form.valid"
+        (click)="onSubmit()"
+      >
+        <fa-icon [icon]="homeIcon"></fa-icon>
+        <span class="ms-2"> {{ "messages.add" | transloco }}</span></core-button
+      >
+
+      <core-button size="xs" class="ms-2" appLoaderButton (click)="showAlert()">
+        <fa-icon [icon]="homeIcon"></fa-icon>
+        <span class="ms-2">
+          {{ "messages.alert" | transloco }}</span
+        ></core-button
+      >
+
+      <core-button size="xs" class="ms-2" color="failure" (click)="cancel()">
+        <span> {{ "messages.return" | transloco }}</span></core-button
+      >
+      <core-button size="xs" class="ms-2" color="success" (click)="saveUser()">
+        <span> {{ "messages.register" | transloco }}</span></core-button
+      >
+    </ng-container>
+  </core-card>
+</form> -->

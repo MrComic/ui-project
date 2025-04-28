@@ -1,0 +1,16 @@
+<nav class="flex py-3" aria-label="Breadcrumb">
+  <ol
+    class="inline-flex space-x-1 md:space-x-1 rtl:space-x-reverse items-center"
+  >
+    @for (breadcrumb of breadcrumbs; track $index) { @if(breadcrumb.label!='') {
+    @if($index == 0) { }
+    <breadcrumb-item
+      [breadcrumb]="breadcrumb"
+      [index]="$index"
+      [color]="color"
+      [last]="breadcrumbs.length == 0 || $index == breadcrumbs.length - 1"
+      (clicked)="openPageWithBreadcrumb($event)"
+    ></breadcrumb-item>
+    } }
+  </ol>
+</nav>

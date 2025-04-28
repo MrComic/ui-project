@@ -1,0 +1,16 @@
+<label class="mt-5 text-sm font-medium dark:text-white text-gray-700">{{
+  LabelText()
+}}</label>
+
+<ng-select
+  [items]="dropdownOptions()"
+  [bindLabel]="Label"
+  [bindValue]="Value"
+  [multiple]="multiple"
+  [clearable]="clearable"
+  [placeholder]="placeholder"
+  [loading]="loading()"
+  [ngModel]="value()"
+  (ngModelChange)="onSelectionChange($event)"
+>
+</ng-select>

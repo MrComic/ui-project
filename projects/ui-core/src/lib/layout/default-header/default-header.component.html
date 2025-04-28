@@ -1,0 +1,59 @@
+<header
+  class="sticky top-0 left-0 z-[5] h-[72px] bg-transparent border-b dark:border-darkborder shadow-sm"
+>
+  <nav
+    class="px-2 h-full dark:border-gray-700 rounded-none bg-white dark:bg-dark py-4 sm:px-6"
+  >
+    <div class="mx-auto h-full flex flex-wrap items-center justify-between">
+      <span
+        (click)="toggleContent()"
+        class="drawer-button px-[15px] hover:text-primary dark:hover:text-primary text-link dark:text-darklink relative after:absolute after:w-10 after:h-10 after:rounded-full hover:after:bg-lightprimary after:bg-transparent rounded-full lg:hidden flex justify-center items-center cursor-pointer"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          aria-hidden="true"
+          role="img"
+          class="iconify iconify--tabler"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path></svg
+      ></span>
+      <div
+        data-testid="flowbite-navbar-collapse"
+        class="w-full md:w-auto hidden lg:block"
+      ></div>
+      <div class="block lg:hidden">
+        <a href="/"
+          ><img
+            alt="logo"
+            loading="lazy"
+            decoding="async"
+            data-nimg="1"
+            class="block h-12 absolute top-3"
+            style="color: transparent"
+            src="images/logo.png"
+        /></a>
+      </div>
+      <div data-testid="flowbite-navbar-collapse" class="w-auto">
+        <ul class="flex gap-2 items-center">
+          <div class="flex gap-0 items-center">
+            <div
+              class="hover:text-primary px-15 dark:hover:text-primary focus:ring-0 rounded-full flex justify-center items-center cursor-pointer text-link dark:text-darklink group relative"
+            >
+              <core-theme-switcher></core-theme-switcher>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

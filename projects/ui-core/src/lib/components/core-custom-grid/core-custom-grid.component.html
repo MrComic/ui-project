@@ -1,0 +1,35 @@
+@if(gridOptions.rowModelType != 'serverSide') {
+<div class="ag-theme-alpine" style="height: 100%; width: 100%">
+  <ag-grid-angular
+    #agGrid
+    class="theme"
+    [ngClass]="!isDarkTheme ? 'ag-theme-alpine' : 'ag-theme-alpine-dark'"
+    style="width: 100%; height: 100%"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [gridOptions]="gridOptions"
+    [rowData]="rowData"
+    [context]="context ?? this"
+    [enableRtl]="true"
+    [components]="frameworkComponents"
+    (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+</div>
+} @else {
+<ag-grid-angular
+  #agGrid
+  class="theme"
+  [context]="context ?? this"
+  [ngClass]="!isDarkTheme ? 'ag-theme-alpine' : 'ag-theme-alpine-dark'"
+  style="width: 100%; height: 100%"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [gridOptions]="gridOptions"
+  [enableRtl]="true"
+  [components]="frameworkComponents"
+  (gridReady)="onGridReady($event)"
+>
+</ag-grid-angular>
+
+}

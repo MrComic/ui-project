@@ -1,0 +1,8 @@
+{
+  "applicationName": "Goja Back",
+  "applicationImage": "/images/Logo.png",
+  "apiUrl": "http://localhost:5134/api",
+  "dev": true,
+  "enable_auth": false,
+  "default_language": "fa"
+}

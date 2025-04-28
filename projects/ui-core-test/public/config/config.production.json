@@ -1,0 +1,8 @@
+{
+  "applicationName": "سامانه مدیریت",
+  "applicationImage": "/images/Logo.png",
+  "apiUrl": "api/",
+  "dev": false,
+  "enable_auth": true,
+  "default_language": "fa"
+}

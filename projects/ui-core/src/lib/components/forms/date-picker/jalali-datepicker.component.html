@@ -1,0 +1,110 @@
+<div class="relative w-full" (clickOutside)="onClickOutside()">
+  <label
+    for="input"
+    class="block dark:text-white text-sm font-medium text-gray-700 pb-1"
+  >
+    {{ label() }}
+  </label>
+  <input
+    type="text"
+    [value]="displayValue"
+    (click)="toggleDatePicker()"
+    readonly
+    placeholder="Select a date"
+    class="w-full hidden border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-0 focus:ring-primary-200"
+  />
+
+  <input
+    type="text"
+    [value]="displayValue"
+    (click)="toggleDatePicker()"
+    readonly
+    placeholder="Select a date"
+    class="w-full border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 rounded-lg p-2 focus:outline-none focus:ring-0 focus:ring-primary-200"
+  />
+
+  <!-- Datepicker Popup -->
+  <div
+    *ngIf="showDatePicker"
+    class="absolute top-full dark:bg-gray-700 dark:text-white left-0 mt-2 md:w-full lg:w-full xl:w-full 2xl:w-96 text-3xl:w-1/4 bg-white border border-gray-300 rounded-lg shadow-md p-4 z-50"
+  >
+    <!-- Header: Month and Year Navigation -->
+    <div class="flex items-center justify-between mb-4">
+      <button
+        (click)="previousMonth()"
+        class="text-gray-600 hover:text-gray-800 dark:text-white"
+      >
+        &#8249;
+      </button>
+      <button
+        (click)="toggleYearMonthView()"
+        class="text-gray-800 dark:text-white font-semibold hover:underline"
+      >
+        {{ monthNames[currentJalaliMonth] }} {{ currentJalaliYear }}
+      </button>
+      <button
+        (click)="nextMonth()"
+        class="text-gray-600 dark:text-white hover:text-gray-800"
+      >
+        &#8250;
+      </button>
+    </div>
+
+    <div
+      *ngIf="yearView"
+      class="grid grid-cols-3 gap-2 text-center w-full h-64 overflow-y-scroll"
+    >
+      <div
+        *ngFor="let year of yearRange"
+        [ngClass]="{ 'bg-lightprimary': currentJalaliYear == year }"
+        (click)="selectYear(year)"
+        class="p-2 cursor-pointer hover:bg-primary-200 rounded transition"
+      >
+        {{ year }}
+      </div>
+    </div>
+
+    <div *ngIf="monthView" class="grid grid-cols-3 gap-2 text-center">
+      <div
+        *ngFor="let month of monthNames; let i = index"
+        (click)="selectMonth(i)"
+        class="p-2 cursor-pointer hover:bg-primary-200 rounded transition"
+      >
+        {{ month }}
+      </div>
+    </div>
+
+    <!-- Days View -->
+    <div *ngIf="!yearView && !monthView">
+      <div class="grid grid-cols-7 text-center text-gray-500 mb-2">
+        <div *ngFor="let day of weekdays" class="font-medium">{{ day }}</div>
+      </div>
+      <div class="grid grid-cols-7 text-center">
+        <div
+          *ngFor="let day of daysInMonth"
+          (click)="selectDate(day)"
+          class="p-1 cursor-pointer rounded-full transition"
+        >
+          <span
+            class="inline-block w-8 h-8 leading-8"
+            [class.bg-primary]="isSelected(day)"
+            [class.hover:bg-lightprimary]="!isSelected(day)"
+            [class.text-white]="isSelected(day)"
+          >
+            {{ day }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Today Button -->
+    <div class="mt-4 text-center">
+      <button
+        (click)="selectToday()"
+        class="text-primary-500 hover:underline focus:outline-none"
+      >
+        امروز
+      </button>
+    </div>
+  </div>
+</div>

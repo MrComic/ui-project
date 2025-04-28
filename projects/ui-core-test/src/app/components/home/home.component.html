@@ -1,0 +1,26 @@
+<div class="flex h-full">
+  <div
+    class="page-wrapper flex flex-col w-full h-full"
+    [ngClass]="{
+      'ltr:me-[250px] rtl:ms-[250px]': !collapsed && !isMobileMode,
+      'ltr:me-[75px] rtl:ms-[75px]': collapsed && !isMobileMode,
+
+      'transition-all': !collapsed && isMobileMode,
+    }"
+  >
+    <core-sidebar></core-sidebar>
+
+    <div class="body-wrapper w-full flex flex-col h-full">
+      <ui-default-header></ui-default-header>
+      <div class="ps-10 pe-7 h-full">
+        <core-router-spinner [oneTimeUsage]="false"></core-router-spinner>
+        <app-breadcrumb></app-breadcrumb>
+        <div style="height: calc(100% - 100px)">
+          <core-toast></core-toast>
+          <core-alert></core-alert>
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

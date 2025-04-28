@@ -1,0 +1,48 @@
+<div
+  class="fixed top-16 left-1/2 transition-all max-w-96 transform -translate-x-1/2 space-y-4 z-50"
+>
+  @for (notification of notifications(); track $index) {
+  <div
+    (click)="dismissNotification($index)"
+    class="flex items-center cursor-pointer border-black transition-all p-4 bg-lightgray rounded shadow-lg border transform"
+    [ngClass]="{
+      'bg-green-300': notification.type === 'success',
+      'bg-red-300': notification.type === 'error',
+      'bg-blue-300': notification.type === 'info',
+      'bg-yellow-300': notification.type === 'warning',
+      'translate-x-0': true
+    }"
+  >
+    <!-- Icon -->
+    <div class="ml-3">
+      <ng-container [ngSwitch]="notification.type">
+        <span *ngSwitchCase="'success'" class="text-green-500"
+          ><fa-icon [icon]="checkIcon"></fa-icon
+        ></span>
+        <span *ngSwitchCase="'error'" class="text-red-500"
+          ><fa-icon [icon]="errorIcon"></fa-icon
+        ></span>
+        <span *ngSwitchCase="'info'" class="text-blue-500"
+          ><fa-icon [icon]="infoIcon"></fa-icon
+        ></span>
+        <span *ngSwitchCase="'warning'" class="text-yellow-500">
+          <fa-icon [icon]="warningIcon"></fa-icon>
+        </span>
+      </ng-container>
+    </div>
+
+    <!-- Message -->
+    <div class="flex-1">
+      <p class="font-medium text-gray-900">{{ notification.message }}</p>
+    </div>
+
+    <!-- Dismiss Button -->
+    <button
+      class="mr-4 text-black hover:text-gray-700"
+      (click)="dismissNotification($index)"
+    >
+      ✕
+    </button>
+  </div>
+  }
+</div>
