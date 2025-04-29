@@ -1,38 +1,34 @@
-<core-card>
+<core-card [fullHeight]="true">
   <ng-container card.header>
     <div class="flex flex-row">
-      <span class="self-center">{{ "Scopes.title" | transloco }}</span>
-
+      <span class="self-center">{{
+        "ScopeSubjects.PageTitle" | transloco
+      }}</span>
       <core-button
         size="xs"
-        class="w-full"
         class="justify-self-end ms-auto"
         color="success"
-        (click)="openRootScope()"
+        (click)="create()"
       >
-        <fa-icon class="" [icon]="addEntry"></fa-icon>
-        &nbsp;
-        <span> {{ "AddRoot" | transloco }}</span></core-button
+        <fa-icon class="me-2" [icon]="faPlus"></fa-icon>
+        <span class="font-light">
+          {{ "ScopeSubjects.Create" | transloco }}</span
+        ></core-button
       >
     </div>
   </ng-container>
 
   <ng-container card.body>
-    <app-tree
-      [nodes]="service.getData()"
-      [rtl]="true"
-      [expandedNodes]="expandedNodes"
-      (nodeRightClick)="onNodeRightClick($event.event, $event.node)"
-    ></app-tree>
-    <app-context-menu
-      *ngIf="contextMenuVisible"
-      [position]="contextMenuPosition"
-      [actions]="contextMenuActions"
-      (close)="contextMenuVisible = false"
-    ></app-context-menu>
+    <core-custom-grid
+      [columnDefs]="colDefs"
+      [theme]="'ag-theme-alpine'"
+      [context]="this"
+      (gridReady)="onGridReady($event)"
+      [frameworkComponents]="[components]"
+      [rowData]="data"
+    >
+    </core-custom-grid>
   </ng-container>
-
-  <ng-container card.footer></ng-container>
 </core-card>
 
 <core-modal
@@ -45,9 +41,23 @@
   <core-modal-header>{{ "Scopes.Form" | transloco }}</core-modal-header>
   <core-modal-body>
     <form [formGroup]="form">
-      <core-layout [cols]="1">
+      <core-layout [cols]="2">
         <core-layout-item [cols]="1">
-          <core-text-input controlName="name" [label]="name"></core-text-input>
+          <core-text-input
+            controlName="title"
+            [label]="title"
+          ></core-text-input>
+        </core-layout-item>
+        <core-layout-item [cols]="1">
+          <core-select
+            formControlName="levels"
+            [LabelText]="translateService.translate('ScopeSubjects.Levels')"
+            [remoteSource]="AvailableLevels"
+            [Label]="'title'"
+            [Value]="'value'"
+            [multiple]="true"
+            [placeholder]="'انتخاب کنید'"
+          ></core-select>
         </core-layout-item>
       </core-layout>
     </form>

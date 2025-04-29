@@ -8,14 +8,14 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
     <div
-      class="absolute bg-white shadow-lg rounded-md py-1 z-50 min-w-[150px] border border-gray-200"
+      class="absolute bg-white w-48 shadow-lg rounded-md py-1 z-50  border border-gray-200"
       [style.top.px]="position.top"
       [style.left.px]="position.left"
     >
       <button
         *ngFor="let action of actions"
         (click)="action.action(); close.emit()"
-        class="w-full text-left px-4 py-2 hover:bg-gray-100 text-gray-800"
+        class="w-full text-right px-4 py-2 hover:bg-gray-100 text-gray-800"
       >
         {{ action.label }}
       </button>

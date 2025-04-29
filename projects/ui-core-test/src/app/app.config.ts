@@ -53,25 +53,7 @@ export function loadConfigurationData(
 ): Observable<any> {
   return configService.loadConfig(Environment.address).pipe(
     concatMap((config) => {
-      return TranslateService.load(config.default_language).pipe(
-        concatMap((translation) =>
-          languageService
-            .getavailableLanguages()
-            .pipe(
-              concatMap((currencies) =>
-                currencyService.getavailableCurrencies()
-              )
-            )
-            .pipe(
-              map((languages, currencies) => ({
-                config,
-                translate: translation,
-                languages,
-                currencies,
-              }))
-            )
-        )
-      );
+      return TranslateService.load(config.default_language);
     })
   );
 }

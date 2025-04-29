@@ -31,7 +31,9 @@
 
       <span *ngIf="!hasChildren(node.id)" class="w-6"></span>
 
-      <span class="text-gray-800">{{ node.label }}</span>
+      <span class="text-gray-800 dark:text-white dark:hover:text-black">{{
+        node.label
+      }}</span>
     </div>
 
     <div *ngIf="expandedNodes.has(node.id)">

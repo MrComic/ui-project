@@ -23,6 +23,7 @@ import {
 import { CoreTextInputComponent } from '../../../../../../ui-core/src/lib/components/forms/core-text-input/core-text-input.component';
 import { TranslateService } from '../../../../../../ui-core/src/lib/translate/services/translate.service';
 import { ScopesService } from '../services/scopes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-scopes',
@@ -60,6 +61,8 @@ export class ScopesComponent {
   expandedNodes = new Set<number>();
   constructor(
     public service: ScopesService,
+    private router: Router,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private translateService: TranslateService
   ) {
@@ -101,7 +104,6 @@ export class ScopesComponent {
   onNodeRightClick(event: MouseEvent, node: any) {
     event.preventDefault();
 
-    // Calculate position (adjust if near edge of viewport)
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
     const menuWidth = 150;
@@ -135,15 +137,19 @@ export class ScopesComponent {
         action: () => this.addChildren(node),
       },
       {
+        label: 'مدیریت مباحث',
+        action: () => this.goToSubjects(node),
+      },
+      {
         label: 'ویرایش',
         action: () => this.editNode(node),
       },
       {
-        label: 'Delete',
+        label: 'حذف',
         action: () => this.deleteNode(node),
       },
       {
-        label: node['expanded'] ? 'Collapse' : 'Expand',
+        label: node['expanded'] ? 'بستن' : 'نمایش فرزندان',
         action: () => this.toggleNode(node),
       },
     ];
@@ -157,6 +163,12 @@ export class ScopesComponent {
       parentId: node.parentId,
     });
     this.modalEl?.open();
+  }
+
+  goToSubjects(node: any) {
+    this.router.navigate(['scope-subjects', node.id], {
+      relativeTo: this.route,
+    });
   }
 
   deleteNode(node: any) {

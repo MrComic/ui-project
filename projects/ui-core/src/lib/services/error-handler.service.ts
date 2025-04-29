@@ -18,11 +18,23 @@ export class ErrorHandlerService implements ErrorHandler {
   ) {}
 
   handleError(error: any): void {
-    if (!navigator.onLine) {
+    if (error instanceof HttpErrorResponse) {
+      this.handleHttpError(error);
+    } else if (!navigator.onLine) {
       this.alertService.alert(['عدم دسترسی به اینترنت'], 'danger');
-      return;
+    } else if (this.isFrameworkError(error)) {
+      console.error('Framework/internal error:', error);
+    } else {
+      console.error('Unhandled error:', error);
+      this.loaderButtonService.hide();
+      this.alertService.alert(
+        ['خطای ناشناخته‌ای رخ داده است. لطفا با تیم فنی تماس بگیرید.'],
+        'danger'
+      );
     }
+  }
 
+  private handleHttpError(error: HttpErrorResponse): void {
     const status = error?.status;
     const errContent = error?.error;
 
@@ -83,14 +95,43 @@ export class ErrorHandlerService implements ErrorHandler {
             ],
             'danger'
           );
-        } else {
-          console.error('Unhandled error:', error);
-          this.loaderButtonService.hide();
-          this.alertService.alert(
-            ['خطای ناشناخته‌ای رخ داده است. لطفا با تیم فنی تماس بگیرید.'],
-            'danger'
-          );
         }
     }
+  }
+
+  private isFrameworkError(error: any): boolean {
+    // Common Angular error patterns to ignore
+    const ignoredPatterns = [
+      /ExpressionChangedAfterItHasBeenCheckedError/,
+      /NG0100:/, // Angular's new error codes (v16+)
+      /Loading chunk \d+ failed/,
+      /Cannot read propert(y|ies)/,
+      /Cannot set propert(y|ies)/,
+      /undefined is not a function/,
+      /null is not an object/,
+      /zone-evergreen/,
+      /core.js/,
+      /vendor.js/,
+      /polyfills.js/,
+      /Uncaught \(in promise\)/,
+      /TypeError/,
+      /ReferenceError/,
+    ];
+
+    if (error?.message) {
+      return ignoredPatterns.some((pattern) => pattern.test(error.message));
+    }
+
+    if (error?.stack) {
+      return (
+        ignoredPatterns.some((pattern) => pattern.test(error.stack)) ||
+        error.stack.includes('zone-evergreen') ||
+        error.stack.includes('core.js') ||
+        error.stack.includes('vendor.js') ||
+        error.stack.includes('polyfills.js')
+      );
+    }
+
+    return false;
   }
 }

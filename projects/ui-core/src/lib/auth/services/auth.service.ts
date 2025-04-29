@@ -23,6 +23,12 @@ export class AuthService {
 
   getUserImage(username: string) {
     this.config = this.configService.getAll();
+    if (this.config['enable_auth'] == false) {
+      return this.http.getWithFile(`/images/image.png`, {
+        responseType: 'blob',
+      });
+    }
+    console.log(this.config['enable_auth'] == 'false');
     return this.http.getWithFile(
       `${this.config['apiUrl']}/auth/User/image/` + username,
       { responseType: 'blob' }

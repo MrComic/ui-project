@@ -3,16 +3,20 @@
   "yes": "بله",
   "no": "خیر",
   "Add": "افزودن",
+  "AddRoot": "افزودن ریشه",
   "return": "بازگشت",
   "title": "عنوان",
   "price": "قیمت",
   "BaseInformation": {
     "Menu": "اطلاعات پایه",
-    "Scopes": "حوزه های آموزشی"
+    "Scopes": "حوزه های آموزشی",
+    "ScopeSubjectBags": "بسته های آموزشی",
+    "AiPrompts": "قالب های پرامپت"
   },
   "Routing": {
     "dashboard": "صفحه اصلی",
-    "scopes": "حوزه های آموزشی"
+    "scopes": "حوزه های آموزشی",
+    "scope-subjects": "مباحث"
   },
   "login": {
     "welcome": "ناحیه کاربری",
@@ -47,5 +51,22 @@
     "Form": "ثبت حوزه آموزشی",
     "CreateRecord": "ثبت",
     "Name": "نام"
+  },
+  "ScopeSubjects": {
+    "Create": "ایجاد",
+    "PageTitle": "عناوین مباحث",
+    "Title": "عنوان مبحث",
+    "ScopeTitle": "حوزه آموزشی",
+    "Levels": "سطوح",
+    "Edit": "ویرایش",
+    "Delete": "حذف",
+    "ensureDelete": "آیا از حذف این موضوع مطمئن هستید؟"
+  },
+  "AttendeeLevel": {
+    "junior": "تازه کار",
+    "midLevel": "نیمه حرفه ای",
+    "senior": "حرفه ای",
+    "expert": "خیلی حرفه ای",
+    "all": "همه سطوح"
   }
 }
