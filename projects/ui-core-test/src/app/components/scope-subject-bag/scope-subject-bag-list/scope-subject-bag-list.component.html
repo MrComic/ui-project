@@ -1,0 +1,88 @@
+<core-card [fullHeight]="true">
+  <ng-container card.header>
+    <div class="flex flex-row">
+      <span class="self-center">{{
+        "ScopeSubjectBag.PageTitle" | transloco
+      }}</span>
+      <core-button
+        size="xs"
+        class="justify-self-end ms-auto"
+        color="success"
+        (click)="create()"
+      >
+        <fa-icon class="me-2" [icon]="faPlus"></fa-icon>
+        <span class="font-light">
+          {{ "ScopeSubjectBag.Create" | transloco }}</span
+        ></core-button
+      >
+    </div>
+  </ng-container>
+
+  <ng-container card.body>
+    <core-custom-grid
+      [columnDefs]="colDefs"
+      [theme]="'ag-theme-alpine'"
+      [context]="this"
+      (gridReady)="onGridReady($event)"
+      [frameworkComponents]="[components]"
+      [rowData]="data"
+    >
+    </core-custom-grid>
+  </ng-container>
+</core-card>
+
+<core-modal
+  #form_modal
+  [isOpen]="true"
+  [isDismissable]="false"
+  [position]="'center'"
+  [size]="'md'"
+>
+  <core-modal-header>{{
+    "ScopeSubjectBag.Form" | transloco
+  }}</core-modal-header>
+  <core-modal-body>
+    <form [formGroup]="form">
+      <core-layout [cols]="2">
+        <core-layout-item [cols]="1">
+          <core-text-input
+            controlName="title"
+            [label]="title"
+          ></core-text-input>
+        </core-layout-item>
+        <core-layout-item [cols]="1">
+          <core-select
+            formControlName="levels"
+            [LabelText]="translateService.translate('ScopeSubjectBag.Levels')"
+            [remoteSource]="AvailableLevels"
+            [Label]="'title'"
+            [Value]="'value'"
+            [multiple]="true"
+            [placeholder]="'انتخاب کنید'"
+          ></core-select>
+        </core-layout-item>
+      </core-layout>
+    </form>
+  </core-modal-body>
+  <core-modal-footer>
+    <div class="flex flex-row justify-end w-full">
+      <core-button
+        size="xs"
+        class="me-2"
+        appLoaderButton
+        [disabled]="!this.form.valid"
+        (click)="Save()"
+      >
+        <fa-icon [icon]="addEntry"></fa-icon>
+        <span class="ms-2">
+          {{ "ScopeSubjectBag.CreateRecord" | transloco }}</span
+        ></core-button
+      >
+
+      <core-button size="xs" class="me-2" color="failure" (click)="onNo()">
+        <fa-icon [icon]="noIcon"></fa-icon>
+        <span class="ms-2"> {{ "messages.no" | transloco }}</span></core-button
+      >
+    </div>
+  </core-modal-footer>
+</core-modal>

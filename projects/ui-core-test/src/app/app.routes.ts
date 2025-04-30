@@ -10,6 +10,7 @@ import { delay, map, of, timeout } from 'rxjs';
 import { AuthGuard } from '../../../ui-core/src/lib/auth/guards/auth.guard';
 import { HomeComponent } from './components/home/home.component';
 import { ScopesRoutes } from './components/scopes/scopes.routes';
+import { ScopesSubjectBagRoutes } from './components/scope-subject-bag/scopes.routes';
 
 export const dummyResolver: ResolveFn<boolean> = (
   route: ActivatedRouteSnapshot,
@@ -38,6 +39,7 @@ export const routes: Routes = [
         resolve: { data: dummyResolver },
       },
       ...ScopesRoutes,
+      ...ScopesSubjectBagRoutes,
     ],
   },
 ];

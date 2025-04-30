@@ -1,7 +1,6 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 import { CardComponent } from '../../../../../../ui-core/src/lib/components/card/card.component';
-import { TreeComponent } from '../tree/tree.component';
-import { ContextMenuComponent } from '../context-menu/context-menu.component';
+
 import { TranslocoModule } from '@jsverse/transloco';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../../../../ui-core/src/lib/components/forms/button/button.component';
@@ -24,6 +23,8 @@ import { CoreTextInputComponent } from '../../../../../../ui-core/src/lib/compon
 import { TranslateService } from '../../../../../../ui-core/src/lib/translate/services/translate.service';
 import { ScopesService } from '../services/scopes.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TreeComponent } from '../../../../../../ui-core/src/lib/components/tree/tree.component';
+import { ContextMenuComponent } from '../../../../../../ui-core/src/lib/components/context-menu/context-menu.component';
 
 @Component({
   selector: 'app-scopes',

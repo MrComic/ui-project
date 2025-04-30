@@ -37,24 +37,7 @@ import { LoaderButtonService } from '../../../../../ui-core/src/lib/services/loa
 
 @Component({
   selector: 'app-dashboard',
-  imports: [
-    CardComponent,
-    ReactiveFormsModule,
-    CoreTextInputComponent,
-    CoreCheckboxComponent,
-    FontAwesomeModule,
-    CoreLayoutComponent,
-    JalaliDatepickerComponent,
-    CoreSelectComponent,
-    TranslocoPipe,
-    ButtonComponent,
-    CommonModule,
-    CoreLayoutItemComponent,
-    CoreTextAreaComponent,
-    LoaderButtonDirective,
-    CoreToggleComponent,
-    CoreRadioComponent,
-  ],
+  imports: [ReactiveFormsModule, FontAwesomeModule, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })

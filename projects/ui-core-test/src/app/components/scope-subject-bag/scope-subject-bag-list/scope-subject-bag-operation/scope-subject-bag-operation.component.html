@@ -1,0 +1,16 @@
+<div class="flex flex-row gap-3 w-full justify-center">
+  <button
+    [title]="translate.translate('ScopeSubjects.Edit')"
+    (click)="onEdit()"
+    class="text-green-500"
+  >
+    <fa-icon [icon]="editIcon" />
+  </button>
+  <button
+    [title]="translate.translate('ScopeSubjects.Delete')"
+    (click)="onDelete()"
+    class="text-red-500"
+  >
+    <fa-icon [icon]="deleteIcon" />
+  </button>
+</div>

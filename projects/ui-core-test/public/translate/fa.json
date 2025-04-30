@@ -16,7 +16,8 @@
   "Routing": {
     "dashboard": "صفحه اصلی",
     "scopes": "حوزه های آموزشی",
-    "scope-subjects": "مباحث"
+    "scope-subjects": "مباحث",
+    "scope-subject-bag": "بسته های آموزشی"
   },
   "login": {
     "welcome": "ناحیه کاربری",
@@ -68,5 +69,13 @@
     "senior": "حرفه ای",
     "expert": "خیلی حرفه ای",
     "all": "همه سطوح"
+  },
+  "ScopeSubjectBag": {
+    "PageTitle": "بسته های آموزشی",
+    "Create": "ایجاد",
+    "Form": "ثبت بسته های آموزشی",
+    "Levels": "سطوح",
+    "Title": "عنوان بسته آموزشی",
+    "CreateRecord": "ثبت"
   }
 }

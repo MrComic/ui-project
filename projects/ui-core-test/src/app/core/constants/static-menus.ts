@@ -11,7 +11,7 @@ const Menus: Menu[] = [
   new Menu('Home', ['/'], faHome),
   new Menu('BaseInformation.Menu', [], faCog, [
     new Menu('BaseInformation.Scopes', ['/', 'scopes']),
-    new Menu('BaseInformation.ScopeSubjectBags', ['/', 'scopes']),
+    new Menu('BaseInformation.ScopeSubjectBags', ['/', 'scope-subject-bag']),
     new Menu('BaseInformation.AiPrompts', ['/', 'scopes']),
   ]),
 ];
