@@ -34,6 +34,11 @@ export class ScopeSubjectBagOperationComponent
     return true;
   }
 
+  ManageSubjects() {
+    const parentComponent = this.params.context;
+    parentComponent.ManageSubjects(this.params.data.id);
+  }
+
   onEdit() {
     const parentComponent = this.params.context;
     parentComponent.edit(this.params.data.id);

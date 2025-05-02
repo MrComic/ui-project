@@ -17,7 +17,8 @@
     "dashboard": "صفحه اصلی",
     "scopes": "حوزه های آموزشی",
     "scope-subjects": "مباحث",
-    "scope-subject-bag": "بسته های آموزشی"
+    "scope-subject-bag": "بسته های آموزشی",
+    "scope-subjects-bag-subjects": "مدیریت موضوعات بسته های آموزشی"
   },
   "login": {
     "welcome": "ناحیه کاربری",
@@ -76,6 +77,13 @@
     "Form": "ثبت بسته های آموزشی",
     "Levels": "سطوح",
     "Title": "عنوان بسته آموزشی",
-    "CreateRecord": "ثبت"
+    "CreateRecord": "ثبت",
+    "ManageSubjects": "مدیریت موضوعات",
+    "Edit": "ویرایش",
+    "Delete": "حذف",
+    "Subjects": "موضوعات",
+    "Scopes": "حوزه های آموزشی",
+    "scopeTitle": "عنوان حوزه آموزشی",
+    "subjectTitle": "عنوان موضوع آموزش"
   }
 }

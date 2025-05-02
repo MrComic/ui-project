@@ -7,7 +7,7 @@
         'padding-right.px': rtl ? level * 20 : 0
       }"
       (contextmenu)="onNodeRightClick($event, node)"
-      (click)="onNodeClick(node)"
+      (click)="onNodeClick($event, node)"
     >
       <button
         *ngIf="hasChildren(node.id)"
@@ -43,6 +43,7 @@
         [level]="level + 1"
         [rtl]="rtl"
         [expandedNodes]="expandedNodes"
+        (nodeClick)="nodeClick.emit($event)"
         (nodeRightClick)="nodeRightClick.emit($event)"
       ></app-tree>
     </div>

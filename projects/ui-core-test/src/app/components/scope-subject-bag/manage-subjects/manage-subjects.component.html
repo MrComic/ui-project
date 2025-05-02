@@ -1,0 +1,68 @@
+<core-layout [cols]="2">
+  <core-layout-item [cols]="1">
+    <core-card [fullHeight]="true">
+      <ng-container card.header>
+        <div class="flex flex-row">
+          <span class="self-center">{{
+            "ScopeSubjectBag.Scopes" | transloco
+          }}</span>
+        </div>
+      </ng-container>
+
+      <ng-container card.body>
+        <app-tree
+          [nodes]="scopeService.getData()"
+          (nodeClick)="onNodeClick($event.event, $event.node)"
+          [rtl]="true"
+        ></app-tree>
+      </ng-container>
+    </core-card>
+  </core-layout-item>
+  <core-layout-item [cols]="1">
+    <core-card [fullHeight]="true">
+      <ng-container card.header>
+        <div class="flex flex-row">
+          <span class="self-center">{{
+            "ScopeSubjectBag.Subjects" | transloco
+          }}</span>
+        </div>
+      </ng-container>
+
+      <ng-container card.body>
+        <core-custom-grid
+          [columnDefs]="SCopeSubjectsColDefs"
+          [theme]="'ag-theme-alpine'"
+          [context]="this"
+          (rowClicked)="subjectClick($event)"
+          (gridReady)="scopeSubjectOnGridReady($event)"
+          [frameworkComponents]="[scopeSubjectComponents]"
+          [rowData]="data"
+        >
+        </core-custom-grid>
+      </ng-container>
+    </core-card>
+  </core-layout-item>
+</core-layout>
+
+<core-card [fullHeight]="true">
+  <ng-container card.header>
+    <div class="flex flex-row">
+      <span class="self-center">{{
+        "ScopeSubjectBag.ManageSubjects" | transloco
+      }}</span>
+    </div>
+  </ng-container>
+
+  <ng-container card.body>
+    <core-custom-grid
+      [columnDefs]="bagSubjectsColDefs"
+      [theme]="'ag-theme-alpine'"
+      class="min-h-10 h-20"
+      [context]="this"
+      (gridReady)="bagSubjectOnGridReady($event)"
+      [frameworkComponents]="[scopeSubjectComponents]"
+      [rowData]="subjectData"
+    >
+    </core-custom-grid>
+  </ng-container>
+</core-card>

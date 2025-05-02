@@ -17,19 +17,22 @@ export class TreeComponent {
     event: MouseEvent;
     node: any;
   }>();
+
+  @Output() nodeClick = new EventEmitter<{
+    event: MouseEvent;
+    node: any;
+  }>();
+
   @Output() expandedNodesChange = new EventEmitter<Set<number>>();
 
-  // Get children for current parent
   getChildren(parentId: number | null) {
     return this.nodes.filter((node) => node.parentId === parentId);
   }
 
-  // Check if node has children
   hasChildren(nodeId: number): boolean {
     return this.nodes.some((node) => node.parentId === nodeId);
   }
 
-  // Toggle node expansion
   toggle(node: any) {
     if (this.expandedNodes.has(node.id)) {
       this.expandedNodes.delete(node.id);
@@ -45,9 +48,10 @@ export class TreeComponent {
     this.nodeRightClick.emit({ event, node });
   }
 
-  onNodeClick(node: any) {
+  onNodeClick(event: MouseEvent, node: any) {
     if (this.hasChildren(node.id)) {
       this.toggle(node);
     }
+    this.nodeClick.emit({ event, node });
   }
 }

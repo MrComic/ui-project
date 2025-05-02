@@ -5,7 +5,14 @@ import ScopeSubjectBagModel from '../models/scope-subject-bag.model';
 
 @Injectable()
 export class ScopeSubjectBagServiceService {
-  private fakeData: ScopeSubjectBagModel[] = [];
+  private fakeData: ScopeSubjectBagModel[] = [
+    {
+      id: 1,
+      levels: [AttendeeLevel.all],
+      scopeSubjectBagItems: [],
+      title: 'بسته آموزشی 1',
+    },
+  ];
 
   private subjectData$: BehaviorSubject<ScopeSubjectBagModel[]> =
     new BehaviorSubject<ScopeSubjectBagModel[]>(this.fakeData);
@@ -16,8 +23,8 @@ export class ScopeSubjectBagServiceService {
     return this.subjectData$.asObservable();
   }
 
-  get(subjectId: number) {
-    return of(this.subjectData$.getValue().find((p) => p.id == subjectId));
+  get(id: number) {
+    return of(this.fakeData.find((p) => p.id == id));
   }
 
   addSubject(newSubject: ScopeSubjectBagModel): void {
@@ -34,6 +41,28 @@ export class ScopeSubjectBagServiceService {
       subject.id === id ? { ...subject, ...updatedSubject } : subject
     );
     this.subjectData$.next(updatedData);
+  }
+
+  addSubjectBagSubject(
+    id: number,
+    scopetitle: string,
+    scopeId: number,
+    subjectTitle: string,
+    subjectId: number
+  ) {
+    let subjectBag = this.fakeData.find((p) => p.id == id);
+    if (!subjectBag) return;
+    let subjectBagItem = subjectBag.scopeSubjectBagItems.find(
+      (p) => p.subjectId == subjectId
+    );
+    if (subjectBagItem) return;
+    subjectBag.scopeSubjectBagItems.push({
+      id: id,
+      scopeId: scopeId,
+      scopetitle: scopetitle,
+      subjectId: subjectId,
+      subjectTitle: subjectTitle,
+    });
   }
 
   deleteSubject(id: number): void {

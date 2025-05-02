@@ -19,7 +19,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '../../../../../../ui-core/src/lib/translate/services/translate.service';
 import { faAdd, faPlus, faRemove } from '@fortawesome/free-solid-svg-icons';
 import { AttendeeLevel } from '../../../common/atendees-level.enum';
@@ -65,18 +65,27 @@ export class ScopeSubjectBagListComponent {
   components: any[] = [ScopeSubjectBagOperationComponent];
   data: ScopeSubjectBagModel[] = [];
 
+  ManageSubjects(id: number) {
+    this.router.navigate(['manage-subjects', id], {
+      relativeTo: this.activatedRoute,
+    });
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private service: ScopeSubjectBagServiceService,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       id: [null],
       title: [null, Validators.required],
       levels: [null, Validators.required],
     });
-
+    this.service.getAll().subscribe((p) => {
+      this.data = p;
+    });
     this.AvailableLevels = () =>
       of(
         Object.keys(AttendeeLevel)

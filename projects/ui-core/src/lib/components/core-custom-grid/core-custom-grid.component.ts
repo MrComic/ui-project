@@ -14,6 +14,7 @@ import {
   GridReadyEvent,
   IServerSideDatasource,
   IServerSideGetRowsParams,
+  RowClickedEvent,
 } from 'ag-grid-community';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import { Observable } from 'rxjs';
@@ -43,7 +44,7 @@ export class CoreCustomGridComponent {
   @Input() serverSideDataSource?: IServerSideDatasource;
 
   @Output() gridReady = new EventEmitter<GridReadyEvent>();
-
+  @Output() rowClicked = new EventEmitter<RowClickedEvent>();
   @ViewChild('agGrid') agGrid!: AgGridAngular;
 
   /**

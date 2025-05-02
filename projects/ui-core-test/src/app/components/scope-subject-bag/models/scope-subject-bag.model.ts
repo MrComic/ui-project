@@ -4,5 +4,13 @@ export default interface ScopeSubjectBagModel {
   id: number;
   title: string;
   levels: AttendeeLevel[];
-  scopeSubjectBagItems: number[];
+  scopeSubjectBagItems: scopeSubjectBagItem[];
+}
+
+export interface scopeSubjectBagItem {
+  id: number;
+  scopetitle: string;
+  scopeId: number;
+  subjectTitle: string;
+  subjectId: number;
 }
